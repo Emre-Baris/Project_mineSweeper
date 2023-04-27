@@ -1,9 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
 
 public class GUI extends JFrame {
 
-    static JLabel lblMineCount = new JLabel("Mines", SwingConstants.CENTER);
+    static JLabel lblMineCount = new JLabel(""+backEnd.totalMines, SwingConstants.CENTER);
     static JLabel lblTimer = new JLabel("Time", SwingConstants.CENTER);
     static JButton btnReset = new JButton("☺");
     static JButton[][] buttons = new JButton[5][5];
@@ -20,7 +23,15 @@ public class GUI extends JFrame {
             int j = 0;
             while (j < 5) {
 
-                JButton button = new JButton("grid" + i + j);
+                int num = i + (j*10);
+                JButton button = new JButton("" + num);
+                button.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        System.out.println(num);
+                        System.out.println(backEnd.hashMine.get(num));
+                    }
+                });
                 panelGrid.add(button);
                 buttons[i][j] = button;
 
@@ -56,6 +67,16 @@ public class GUI extends JFrame {
         frame.add(panelUpper, BorderLayout.NORTH);
         frame.pack();
 
+
+        btnReset.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                backEnd.mineReset();
+                lblMineCount.setText(""+backEnd.totalMines);
+                System.out.println("Game reset!");
+
+            }
+        });
 
 
     }

@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,11 +7,13 @@ import java.util.HashMap;
 
 public class GUI extends JFrame {
 
-    static JLabel lblMineCount = new JLabel(""+backEnd.totalMines, SwingConstants.CENTER);
+    static JLabel lblMineCount = new JLabel("Time", SwingConstants.CENTER);
     static JLabel lblTimer = new JLabel("Time", SwingConstants.CENTER);
+    static JLabel lblMine = new JLabel("Mine Status", SwingConstants.CENTER);
     static JButton btnReset = new JButton("☺");
     static JButton[][] buttons = new JButton[5][5];
 
+    static HashMap<Integer, Boolean> currentMap = new HashMap<>();
 
     public static JPanel panelGrid(){
 
@@ -29,7 +32,7 @@ public class GUI extends JFrame {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         System.out.println(num);
-                        System.out.println(backEnd.hashMine.get(num));
+                        lblMine.setText("Mine Status: " + currentMap.get(num));
                     }
                 });
                 panelGrid.add(button);
@@ -55,7 +58,9 @@ public class GUI extends JFrame {
 
 
     public static void main(String[] args) {
+
         GUI frame = new GUI();
+        backEnd.mineReset();
 
         JPanel panelUpper = new JPanel(new GridLayout(1,3));
         panelUpper.add(lblMineCount);
@@ -65,6 +70,7 @@ public class GUI extends JFrame {
 
         frame.add(panelGrid(), BorderLayout.CENTER);
         frame.add(panelUpper, BorderLayout.NORTH);
+        frame.add(lblMine, BorderLayout.SOUTH);
         frame.pack();
 
 
@@ -72,12 +78,11 @@ public class GUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 backEnd.mineReset();
-                lblMineCount.setText(""+backEnd.totalMines);
                 System.out.println("Game reset!");
 
             }
         });
-
+        backEnd.num
 
     }
 

@@ -4,42 +4,48 @@ public class backEnd extends GUI{
 
 
 
-    public static HashMap<Integer, Boolean> hashMine = mineReset();
-    public static int totalMines;
-
-                                                 //Creates temp hashmap with all values false used for reset
-    public static HashMap<Integer, Boolean> mineReset(){
-
-                                                //Reset mines count
-        totalMines = 0;
+                        //Creates/Resets hashmap with no mines(Boolean false)
+    public static void mineReset(){
 
         HashMap<Integer, Boolean> gridValues = new HashMap<>();
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
+
+        int i = 0;
+        while (i < 5) {
+
+            int j = 0;
+            while (j < 5) {
+
                 int a = j+(i*10);
 
-                                                //Generates random number between 0 and 10, if num is equal to 5 sets a mine
-
-                int rand = ThreadLocalRandom.current().nextInt(0, 10);
-
-                if(rand == 5){
-                    totalMines++;
-                    gridValues.put(a, true);
-                    System.out.println(a);
-                }
-                else
                     gridValues.put(a, false);
-
+                j++;
             }
+            i++;
         }
-
-        return gridValues;
+        GUI.currentMap = gridValues;
+        mineGenerator();
     }
 
 
 
+    public static void mineGenerator(){
+
+        int numOfMines = randomNum(0,10);
+
+        while(numOfMines>0) {
+            int row = randomNum(0, 4);
+            int column = 10*randomNum(0, 4);
+
+            GUI.currentMap.replace(row+column, true);
+            numOfMines--;
+        }
 
 
+    }
 
+    public static int randomNum (int min, int max){      //Random number generator
+        int random = ThreadLocalRandom.current().nextInt(min, max + 1);
+        return random;
+    }
 
 }

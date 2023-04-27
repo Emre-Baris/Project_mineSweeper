@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="058f958d-df91-4de2-a362-090a5d9524c4" name="Changes" comment="HashMap Setup made, all current values set to false for later testing&#10;&#10;Automated button generation added, using 2D arrays for button access">
+    <list default="true" id="058f958d-df91-4de2-a362-090a5d9524c4" name="Changes" comment="Temporary basic mine creation, will be changed later.&#10;&#10;Attempts on making the Mine Counter and Reset button work.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/backEnd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/backEnd.java" afterDir="false" />
@@ -58,7 +58,7 @@
       <option name="presentableId" value="Default" />
       <updated>1682595573297</updated>
       <workItem from="1682595574423" duration="10787000" />
-      <workItem from="1682610173893" duration="4154000" />
+      <workItem from="1682610173893" duration="7126000" />
     </task>
     <task id="LOCAL-00001" summary="Basic Setup for project. &#10;&#10;Temp buttons added&#10;Basic Frame Setup&#10;Basic Grid Setup">
       <created>1682605226968</created>
@@ -74,15 +74,34 @@
       <option name="project" value="LOCAL" />
       <updated>1682609629182</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Temporary basic mine creation, will be changed later.&#10;&#10;Attempts on making the Mine Counter and Reset button work.">
+      <created>1682614719410</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1682614719410</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Basic Setup for project. &#10;&#10;Temp buttons added&#10;Basic Frame Setup&#10;Basic Grid Setup" />
     <MESSAGE value="HashMap Setup made, all current values set to false for later testing&#10;&#10;Automated button generation added, using 2D arrays for button access" />
-    <option name="LAST_COMMIT_MESSAGE" value="HashMap Setup made, all current values set to false for later testing&#10;&#10;Automated button generation added, using 2D arrays for button access" />
+    <MESSAGE value="Temporary basic mine creation, will be changed later.&#10;&#10;Attempts on making the Mine Counter and Reset button work." />
+    <option name="LAST_COMMIT_MESSAGE" value="Temporary basic mine creation, will be changed later.&#10;&#10;Attempts on making the Mine Counter and Reset button work." />
   </component>
 </project>

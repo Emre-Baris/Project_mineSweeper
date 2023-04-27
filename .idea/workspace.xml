@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="058f958d-df91-4de2-a362-090a5d9524c4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mineSweeper.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/backEnd.java" afterDir="false" />
+    <list default="true" id="058f958d-df91-4de2-a362-090a5d9524c4" name="Changes" comment="Basic Setup for project. &#10;&#10;Temp buttons added&#10;Basic Frame Setup&#10;Basic Grid Setup">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backEnd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/backEnd.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,11 +57,23 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1682595573297</updated>
-      <workItem from="1682595574423" duration="5664000" />
+      <workItem from="1682595574423" duration="10112000" />
     </task>
+    <task id="LOCAL-00001" summary="Basic Setup for project. &#10;&#10;Temp buttons added&#10;Basic Frame Setup&#10;Basic Grid Setup">
+      <created>1682605226968</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1682605226968</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Basic Setup for project. &#10;&#10;Temp buttons added&#10;Basic Frame Setup&#10;Basic Grid Setup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Basic Setup for project. &#10;&#10;Temp buttons added&#10;Basic Frame Setup&#10;Basic Grid Setup" />
   </component>
 </project>

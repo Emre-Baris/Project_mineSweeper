@@ -31,7 +31,7 @@ public class GUI extends JFrame {
                 button.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        System.out.println(num);
+                        System.out.println(num);                                    //reminder to move the listener execution to some place else
                         lblMine.setText("Mine Status: " + currentMap.get(num));
                     }
                 });
@@ -60,7 +60,6 @@ public class GUI extends JFrame {
     public static void main(String[] args) {
 
         GUI frame = new GUI();
-        backEnd.mineReset();
 
         JPanel panelUpper = new JPanel(new GridLayout(1,3));
         panelUpper.add(lblMineCount);
@@ -73,16 +72,17 @@ public class GUI extends JFrame {
         frame.add(lblMine, BorderLayout.SOUTH);
         frame.pack();
 
+        mineGeneration.mineReset();
 
         btnReset.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                backEnd.mineReset();
+                mineGeneration.mineReset();
                 System.out.println("Game reset!");
 
             }
         });
-        backEnd.num
+
 
     }
 

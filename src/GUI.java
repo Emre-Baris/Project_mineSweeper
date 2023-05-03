@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,8 +11,16 @@ public class GUI extends JFrame {
     static JLabel lblMine = new JLabel("Mine Status", SwingConstants.CENTER);
     static JButton btnReset = new JButton("☺");
     static JButton[][] buttons = new JButton[5][5];
-
     static HashMap<Integer, Boolean> currentMap = new HashMap<>();
+
+
+    public GUI (){                      //Constructor for frame
+        setTitle("MineSweeper");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(500, 500);
+        setVisible(true);
+        setLayout(new BorderLayout());
+    }
 
     public static JPanel panelGrid(){
 
@@ -27,14 +34,7 @@ public class GUI extends JFrame {
             while (j < 5) {
 
                 int num = i + (j*10);
-                JButton button = new JButton("" + num);
-                button.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        System.out.println(num);                                    //reminder to move the listener execution to some place else
-                        lblMine.setText("Mine Status: " + currentMap.get(num));
-                    }
-                });
+                JButton button = new JButton(""+num);
                 panelGrid.add(button);
                 buttons[i][j] = button;
 
@@ -45,18 +45,6 @@ public class GUI extends JFrame {
         return panelGrid;
     }
 
-
-    public GUI (){
-                                    //Constructor for frame
-        setTitle("MineSweeper");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500, 500);
-        setVisible(true);
-        setLayout(new BorderLayout());
-
-    }
-
-
     public static void main(String[] args) {
 
         GUI frame = new GUI();
@@ -66,14 +54,12 @@ public class GUI extends JFrame {
         panelUpper.add(btnReset);
         panelUpper.add(lblTimer);
 
-
         frame.add(panelGrid(), BorderLayout.CENTER);
         frame.add(panelUpper, BorderLayout.NORTH);
         frame.add(lblMine, BorderLayout.SOUTH);
-        frame.pack();
 
         mineGeneration.mineReset();
-
+        buttonAction.addListener(buttons);
         btnReset.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -82,8 +68,6 @@ public class GUI extends JFrame {
 
             }
         });
-
-
     }
 
 }

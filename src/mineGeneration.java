@@ -1,10 +1,10 @@
 import java.util.HashMap;
 import java.util.concurrent.ThreadLocalRandom;
-public class backEnd extends GUI{
+public class mineGeneration extends GUI{
 
 
 
-                        //Creates/Resets hashmap with no mines(Boolean false)
+                        //Creates/Resets hashmap with no mines(all Boolean values set to false)
     public static void mineReset(){
 
         HashMap<Integer, Boolean> gridValues = new HashMap<>();
@@ -18,6 +18,7 @@ public class backEnd extends GUI{
                 int a = j+(i*10);
 
                     gridValues.put(a, false);
+                    GUI.buttons[i][j].setText("");
                 j++;
             }
             i++;
@@ -28,15 +29,17 @@ public class backEnd extends GUI{
 
 
 
+    //Used random numbers for both deciding num of mines and placement of mines
     public static void mineGenerator(){
 
-        int numOfMines = randomNum(0,10);
+        int numOfMines = randomNum(4,10);
 
-        while(numOfMines>0) {
+        while(numOfMines>0) {       //Values to decide mines placement
             int row = randomNum(0, 4);
             int column = 10*randomNum(0, 4);
 
-            GUI.currentMap.replace(row+column, true);
+            GUI.currentMap.replace(row+column, true);            //Setting mines
+            GUI.buttons[row][column/10].setText("\uD83D\uDCA3");         //Setting text of mines to see where mines are
             numOfMines--;
         }
 

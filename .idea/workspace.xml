@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="058f958d-df91-4de2-a362-090a5d9524c4" name="Changes" comment="Temporary basic mine creation, will be changed later.&#10;&#10;Attempts on making the Mine Counter and Reset button work.">
-      <change afterPath="$PROJECT_DIR$/src/buttonAction.java" afterDir="false" />
+    <list default="true" id="058f958d-df91-4de2-a362-090a5d9524c4" name="Changes" comment="Added new file buttonAction.java&#10;-Method addListener added. ActionListeners no longer added with the creation.&#10;-Checking clicked button for mines and returning the count of adjacent mines.&#10;&#10;-Method findBtnPos added.&#10;-Used to find the position of a button and return index in an array of 2 elements being row and column&#10;&#10;&#10;GUI.java&#10;&#10;-Moved constructor&#10;-As mentioned, moved action listener creation to buttonAction.java.&#10;-Tidied up&#10;&#10;isNeighbour.java&#10;&#10;-Finished the method with full overhaul &#10;-Added currentRow and currentCol for use if needed">
+      <change afterPath="$PROJECT_DIR$/src/mineCounter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/isNeighbour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/isNeighbour.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/buttonAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/buttonAction.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,6 +98,7 @@
       <workItem from="1683025180140" duration="778000" />
       <workItem from="1683026045911" duration="1236000" />
       <workItem from="1683027683716" duration="8952000" />
+      <workItem from="1683135526576" duration="5187000" />
     </task>
     <task id="LOCAL-00001" summary="Basic Setup for project. &#10;&#10;Temp buttons added&#10;Basic Frame Setup&#10;Basic Grid Setup">
       <created>1682605226968</created>
@@ -121,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682614719410</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added new file buttonAction.java&#10;-Method addListener added. ActionListeners no longer added with the creation.&#10;-Checking clicked button for mines and returning the count of adjacent mines.&#10;&#10;-Method findBtnPos added.&#10;-Used to find the position of a button and return index in an array of 2 elements being row and column&#10;&#10;&#10;GUI.java&#10;&#10;-Moved constructor&#10;-As mentioned, moved action listener creation to buttonAction.java.&#10;-Tidied up&#10;&#10;isNeighbour.java&#10;&#10;-Finished the method with full overhaul &#10;-Added currentRow and currentCol for use if needed">
+      <created>1683135339607</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683135339607</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,6 +160,7 @@
     <MESSAGE value="Basic Setup for project. &#10;&#10;Temp buttons added&#10;Basic Frame Setup&#10;Basic Grid Setup" />
     <MESSAGE value="HashMap Setup made, all current values set to false for later testing&#10;&#10;Automated button generation added, using 2D arrays for button access" />
     <MESSAGE value="Temporary basic mine creation, will be changed later.&#10;&#10;Attempts on making the Mine Counter and Reset button work." />
-    <option name="LAST_COMMIT_MESSAGE" value="Temporary basic mine creation, will be changed later.&#10;&#10;Attempts on making the Mine Counter and Reset button work." />
+    <MESSAGE value="Added new file buttonAction.java&#10;-Method addListener added. ActionListeners no longer added with the creation.&#10;-Checking clicked button for mines and returning the count of adjacent mines.&#10;&#10;-Method findBtnPos added.&#10;-Used to find the position of a button and return index in an array of 2 elements being row and column&#10;&#10;&#10;GUI.java&#10;&#10;-Moved constructor&#10;-As mentioned, moved action listener creation to buttonAction.java.&#10;-Tidied up&#10;&#10;isNeighbour.java&#10;&#10;-Finished the method with full overhaul &#10;-Added currentRow and currentCol for use if needed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new file buttonAction.java&#10;-Method addListener added. ActionListeners no longer added with the creation.&#10;-Checking clicked button for mines and returning the count of adjacent mines.&#10;&#10;-Method findBtnPos added.&#10;-Used to find the position of a button and return index in an array of 2 elements being row and column&#10;&#10;&#10;GUI.java&#10;&#10;-Moved constructor&#10;-As mentioned, moved action listener creation to buttonAction.java.&#10;-Tidied up&#10;&#10;isNeighbour.java&#10;&#10;-Finished the method with full overhaul &#10;-Added currentRow and currentCol for use if needed" />
   </component>
 </project>

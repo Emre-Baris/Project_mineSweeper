@@ -1,10 +1,4 @@
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import static java.util.Arrays.*;
 
 public class buttonAction {
 
@@ -18,28 +12,13 @@ public class buttonAction {
 
                 int pos = finalI+(finalJ*10);
 
-                ArrayList<JButton> neighbors = isNeighbour.isNeighbourOf(i, j, grid); //find neighbours of button
+                grid[i][j].addActionListener(e -> {
 
-                grid[i][j].addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        GUI.lblMine.setText("Mine Status: " + GUI.currentMap.get(pos));
+                    GUI.lblMine.setText("Mine Status: " + GUI.currentMap.get(pos)); //Set value of lbl at bottom to true or false depending on if there is a mine
 
-                        int numOfMines = 0;                //Start count for mines
-                        for (JButton btn: neighbors) {     //iterate through buttons
-                            int[] index= findBtnPos(btn);  //get index of button
-                            int target = -1;
-                            if (stream(index).noneMatch(x -> x == target)){
-                                int posOf = (index[0] + (index[1]*10));
-                                if(GUI.currentMap.get(posOf)){  //if this neighbour is a mine add to the count
-                                numOfMines++;
-                                }
-                            }
-                        }
-                        ;
-                    }
+                    mineCounter.countMines(finalI,finalJ,grid);
+
                 });
-
 
             }
         }
@@ -67,3 +46,4 @@ public class buttonAction {
         return indices;
     }
 }
+

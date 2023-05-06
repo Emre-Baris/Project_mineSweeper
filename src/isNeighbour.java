@@ -23,6 +23,7 @@ public class isNeighbour {
                 }
             }
         }
+
         return neighbors;
     }
 

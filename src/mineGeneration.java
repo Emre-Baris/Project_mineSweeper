@@ -7,7 +7,7 @@ public class mineGeneration extends GUI{
                         //Creates/Resets hashmap with no mines(all Boolean values set to false)
     public static void mineReset(){
 
-        HashMap<Integer, Boolean> gridValues = new HashMap<>();
+        HashMap<Integer, cell> gridValues = new HashMap<>();
 
         int i = 0;
         while (i < 5) {
@@ -16,9 +16,12 @@ public class mineGeneration extends GUI{
             while (j < 5) {
 
                 int a = j+(i*10);
+                    cell created = new cell();
+                    created.setRow(i);
+                    created.setCol(j);
+                    created.setMine(false);
+                    gridValues.put(a, created);
 
-                    gridValues.put(a, false);
-                    GUI.buttons[i][j].setText("");
                 j++;
             }
             i++;
@@ -38,7 +41,7 @@ public class mineGeneration extends GUI{
             int row = randomNum(0, 4);
             int column = 10*randomNum(0, 4);
 
-            GUI.currentMap.replace(row+column, true);            //Setting mines
+            GUI.currentMap.get(row+column).setMine(true);                     //Setting mines
             GUI.buttons[row][column/10].setText("\uD83D\uDCA3");         //Setting text of mines to see where mines are
             numOfMines--;
         }

@@ -1,17 +1,15 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 public class GUI extends JFrame {
 
-    static JLabel lblMineCount = new JLabel("Time", SwingConstants.CENTER);
+    static JLabel lblMineCount = new JLabel("Mine Count", SwingConstants.CENTER);
     static JLabel lblTimer = new JLabel("Time", SwingConstants.CENTER);
     static JLabel lblMine = new JLabel("Mine Status", SwingConstants.CENTER);
     static JButton btnReset = new JButton("☺");
     static JButton[][] buttons = new JButton[5][5];
-    static HashMap<Integer, Boolean> currentMap = new HashMap<>();
+    static HashMap<Integer, cell> currentMap = new HashMap<>();
 
 
     public GUI (){                      //Constructor for frame
@@ -34,7 +32,7 @@ public class GUI extends JFrame {
             while (j < 5) {
 
                 int num = i + (j*10);
-                JButton button = new JButton(""+num);
+                JButton button = new JButton();
                 panelGrid.add(button);
                 buttons[i][j] = button;
 
@@ -60,13 +58,10 @@ public class GUI extends JFrame {
 
         mineGeneration.mineReset();
         buttonAction.addListener(buttons);
-        btnReset.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mineGeneration.mineReset();
-                System.out.println("Game reset!");
+        btnReset.addActionListener(e -> {
+            mineGeneration.mineReset();
+            System.out.println("Game reset!");
 
-            }
         });
     }
 

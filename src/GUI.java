@@ -52,8 +52,8 @@ public class GUI extends JFrame {
         panelUpper.add(btnReset);
         panelUpper.add(lblTimer);
 
-        frame.add(panelGrid(), BorderLayout.CENTER);
         frame.add(panelUpper, BorderLayout.NORTH);
+        frame.add(panelGrid(), BorderLayout.CENTER);
         frame.add(lblMine, BorderLayout.SOUTH);
 
         mineGeneration.mineReset();

@@ -14,7 +14,7 @@ public class buttonAction {
 
                 grid[i][j].addActionListener(e -> {
 
-                    GUI.lblMine.setText("Mine Status: " + GUI.currentMap.get(pos)); //Set value of lbl at bottom to true or false depending on if there is a mine
+                    GUI.lblMine.setText("Mine Status: " + GUI.currentMap.get(pos).isMine()); //Set value of lbl at bottom to true or false depending on if there is a mine
 
                     mineCounter.countMines(finalI,finalJ,grid);
 

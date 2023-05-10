@@ -21,6 +21,7 @@ public class mineGeneration extends GUI{
                     created.setCol(j);
                     created.setMine(false);
                     gridValues.put(a, created);
+                    GUI.buttons[i][j].setText("");
 
                 j++;
             }

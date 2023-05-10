@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="058f958d-df91-4de2-a362-090a5d9524c4" name="Changes" comment="Added new file buttonAction.java&#10;-Method addListener added. ActionListeners no longer added with the creation.&#10;-Checking clicked button for mines and returning the count of adjacent mines.&#10;&#10;-Method findBtnPos added.&#10;-Used to find the position of a button and return index in an array of 2 elements being row and column&#10;&#10;&#10;GUI.java&#10;&#10;-Moved constructor&#10;-As mentioned, moved action listener creation to buttonAction.java.&#10;-Tidied up&#10;&#10;isNeighbour.java&#10;&#10;-Finished the method with full overhaul &#10;-Added currentRow and currentCol for use if needed">
-      <change afterPath="$PROJECT_DIR$/src/cell.java" afterDir="false" />
+    <list default="true" id="058f958d-df91-4de2-a362-090a5d9524c4" name="Changes" comment="Added new object cell in cell.java&#10;Made changes to other methods to work with the new object">
+      <change afterPath="$PROJECT_DIR$/src/checkZeroNeighbors.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/isNeighbour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/isNeighbour.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mineCounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mineCounter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/buttonAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/buttonAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/mineGeneration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mineGeneration.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,25 +53,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="GUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GUI" />
@@ -103,7 +103,8 @@
       <workItem from="1683027683716" duration="8952000" />
       <workItem from="1683135526576" duration="5187000" />
       <workItem from="1683284693293" duration="1274000" />
-      <workItem from="1683409677751" duration="5448000" />
+      <workItem from="1683409677751" duration="6262000" />
+      <workItem from="1683724580043" duration="4650000" />
     </task>
     <task id="LOCAL-00001" summary="Basic Setup for project. &#10;&#10;Temp buttons added&#10;Basic Frame Setup&#10;Basic Grid Setup">
       <created>1682605226968</created>
@@ -133,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683135339607</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added new object cell in cell.java&#10;Made changes to other methods to work with the new object">
+      <created>1683415933933</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1683415933933</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,6 +174,7 @@
     <MESSAGE value="HashMap Setup made, all current values set to false for later testing&#10;&#10;Automated button generation added, using 2D arrays for button access" />
     <MESSAGE value="Temporary basic mine creation, will be changed later.&#10;&#10;Attempts on making the Mine Counter and Reset button work." />
     <MESSAGE value="Added new file buttonAction.java&#10;-Method addListener added. ActionListeners no longer added with the creation.&#10;-Checking clicked button for mines and returning the count of adjacent mines.&#10;&#10;-Method findBtnPos added.&#10;-Used to find the position of a button and return index in an array of 2 elements being row and column&#10;&#10;&#10;GUI.java&#10;&#10;-Moved constructor&#10;-As mentioned, moved action listener creation to buttonAction.java.&#10;-Tidied up&#10;&#10;isNeighbour.java&#10;&#10;-Finished the method with full overhaul &#10;-Added currentRow and currentCol for use if needed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added new file buttonAction.java&#10;-Method addListener added. ActionListeners no longer added with the creation.&#10;-Checking clicked button for mines and returning the count of adjacent mines.&#10;&#10;-Method findBtnPos added.&#10;-Used to find the position of a button and return index in an array of 2 elements being row and column&#10;&#10;&#10;GUI.java&#10;&#10;-Moved constructor&#10;-As mentioned, moved action listener creation to buttonAction.java.&#10;-Tidied up&#10;&#10;isNeighbour.java&#10;&#10;-Finished the method with full overhaul &#10;-Added currentRow and currentCol for use if needed" />
+    <MESSAGE value="Added new object cell in cell.java&#10;Made changes to other methods to work with the new object" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new object cell in cell.java&#10;Made changes to other methods to work with the new object" />
   </component>
 </project>

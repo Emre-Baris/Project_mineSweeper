@@ -8,7 +8,7 @@ public class GUI extends JFrame {
     static JLabel lblTimer = new JLabel("Time", SwingConstants.CENTER);
     static JLabel lblMine = new JLabel("Mine Status", SwingConstants.CENTER);
     static JButton btnReset = new JButton("☺");
-    static JButton[][] buttons = new JButton[5][5];
+    static cell[][] buttons = new cell[5][5];
     static HashMap<Integer, cell> currentMap = new HashMap<>();
 
 
@@ -26,15 +26,20 @@ public class GUI extends JFrame {
         panelGrid.setLayout(new GridLayout(5,5));
 
                                 //Generated buttons
-        int i = 0;              //Adds buttons to 2D Array for later usage
+        int i = 0;              //Adds cells to 2D Array for later usage
         while (i < 5) {
             int j = 0;
             while (j < 5) {
 
-                int num = i + (j*10);
                 JButton button = new JButton();
+                cell newCell = new cell();
+
+                newCell.setBtn(button);         //Sets the values for the newly created cell
+                newCell.setRow(i);
+                newCell.setCol(j);
+                buttons[i][j] = newCell;
+
                 panelGrid.add(button);
-                buttons[i][j] = button;
 
                 j++;
             }

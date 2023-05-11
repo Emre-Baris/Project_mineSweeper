@@ -21,7 +21,7 @@ public class mineGeneration extends GUI{
                     created.setCol(j);
                     created.setMine(false);
                     gridValues.put(a, created);
-                    GUI.buttons[i][j].setText("");
+                    GUI.buttons[i][j].getBtn().setText("");
 
                 j++;
             }
@@ -43,7 +43,7 @@ public class mineGeneration extends GUI{
             int column = 10*randomNum(0, 4);
 
             GUI.currentMap.get(row+column).setMine(true);                     //Setting mines
-            GUI.buttons[row][column/10].setText("\uD83D\uDCA3");         //Setting text of mines to see where mines are
+            GUI.buttons[row][column/10].getBtn().setText("\uD83D\uDCA3");         //Setting text of mines to see where mines are
             numOfMines--;
         }
 

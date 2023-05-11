@@ -3,10 +3,10 @@ import java.util.ArrayList;
 
 public class isNeighbour {
 
-    public static ArrayList<JButton> isNeighbourOf(int row, int col, JButton[][] grid){
+    public static ArrayList<cell> isNeighbourOf(int row, int col, cell[][] grid){
         int currentRow =0;
         int currentCol =0;
-        ArrayList<JButton> neighbors = new ArrayList<>();
+        ArrayList<cell> neighbors = new ArrayList<>();
 
         for (int i = Math.max(0, row-1); //Math.max used to ensure index doesn't go below 0
              i <= Math.min(row+1, grid.length-1); //min used to make sure index is doesn't go further than the latest grid row,

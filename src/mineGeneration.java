@@ -21,8 +21,8 @@ public class mineGeneration extends GUI{
                     created.setCol(j);
                     created.setMine(false);
                     gridValues.put(a, created);
+                    GUI.buttons[i][j].getBtn().setEnabled(true);
                     GUI.buttons[i][j].getBtn().setText("");
-
                 j++;
             }
             i++;
@@ -36,7 +36,7 @@ public class mineGeneration extends GUI{
     //Used random numbers for both deciding num of mines and placement of mines
     public static void mineGenerator(){
 
-        int numOfMines = randomNum(4,10);
+        int numOfMines = randomNum(2,5);
 
         while(numOfMines>0) {       //Values to decide mines placement
             int row = randomNum(0, 4);

@@ -8,13 +8,29 @@ public class cell {
     private int col; // column index of the button
     private boolean isMine; // whether the button has a mine
     private int adjacentMines; // number of adjacent buttons with mines
-
-    private int cellCoordinates;
-
-
+    private boolean isFlagged; // whether the button is flagged
+    private boolean isRevealed; // whether the button is revealed
     private ArrayList<JButton> neighbors; // list of adjacent buttons
+
+
     public cell(){
 
+    }
+
+    public boolean isFlagged() {
+        return isFlagged;
+    }
+
+    public void setFlagged(boolean flagged) {
+        isFlagged = flagged;
+    }
+
+    public boolean isRevealed() {
+        return isRevealed;
+    }
+
+    public void setRevealed(boolean revealed) {
+        isRevealed = revealed;
     }
 
     public int getCellCoordinates() {

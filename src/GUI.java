@@ -69,5 +69,13 @@ public class GUI extends JFrame {
 
         });
     }
-
+    public static void gameOver() {
+        lblMine.setText("Game Over!");
+        btnReset.setText("☹");
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5 ; j++) {
+                buttons[i][j].getBtn().setEnabled(false);
+            }
+        }
+    }
 }

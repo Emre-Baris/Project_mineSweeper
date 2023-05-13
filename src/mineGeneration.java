@@ -29,6 +29,7 @@ public class mineGeneration extends GUI{
         }
         GUI.currentMap = gridValues;
         mineGenerator();
+        GUI.btnReset.setText("☺");
     }
 
 

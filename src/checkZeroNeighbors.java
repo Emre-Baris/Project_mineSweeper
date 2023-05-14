@@ -1,26 +1,28 @@
-/*
-public class checkZeroNeighbors {ArrayList<JButton> zeroNeighbors = isNeighbour.isNeighbourOf(clickedRow, clickedCol, buttons);
+public class checkZeroNeighbors{
 
-for(JButton neighbor : zeroNeighbors) {
-        int neighborRow = -1, neighborCol = -1;
-        // Find the position of the current neighbor button in the grid
-        for (int i = 0; i < buttons.length; i++) {
-            for (int j = 0; j < buttons[i].length; j++) {
-                if (buttons[i][j] == neighbor) {
-                    neighborRow = i;
-                    neighborCol = j;
-                    break;
+    public static void revealZero(cell thisCell) {
+
+
+
+        int row = thisCell.getRow();
+        int col = thisCell.getCol();
+
+        int pos = thisCell.getCellCoordinates();
+
+        GUI.currentMap.get(pos).getBtn().setText(String.valueOf(GUI.currentMap.get(pos).getAdjacentMines()));
+
+        if (GUI.currentMap.get(pos).getAdjacentMines() == 0 && !GUI.currentMap.get(pos).isMine() && !GUI.currentMap.get(pos).isRevealed()) {
+            // Mark the current cell as revealed
+            GUI.currentMap.get(pos).setRevealed(true);
+            thisCell.getBtn().setText("0"); // Clear the text of the button
+
+            for (cell neighbor : GUI.currentMap.get(pos).getNeighbors()) {
+                if (!GUI.currentMap.get(neighbor.getCellCoordinates()).isRevealed()) {
+                    neighbor.getBtn().setText(String.valueOf(GUI.currentMap.get(neighbor.getCellCoordinates()).getAdjacentMines()));
+                    revealZero(neighbor);
                 }
             }
-            if (neighborRow != -1) {
-                break;
-            }
         }
-        // Check if the current neighbor button has 0 neighbors and reveal them if it does
-        if (neighborRow != -1 && neighborCol != -1) {
-            checkZeroNeighbors(neighborRow, neighborCol, buttons);
-        }
-        neighbor.setText(mineCounter.countMines(neighborRow, neighborCol, buttons)); // update the text of the neighbor button to show the number of nearby mines
     }
+
 }
-*/

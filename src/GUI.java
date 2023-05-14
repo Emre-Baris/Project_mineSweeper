@@ -8,7 +8,7 @@ public class GUI extends JFrame {
     static JLabel lblTimer = new JLabel("Time", SwingConstants.CENTER);
     static JLabel lblMine = new JLabel("Mine Status", SwingConstants.CENTER);
     static JButton btnReset = new JButton("☺");
-    static cell[][] buttons = new cell[5][5];
+    public static cell[][] buttons = new cell[5][5];
     static HashMap<Integer, cell> currentMap = new HashMap<>();
 
 
@@ -18,6 +18,7 @@ public class GUI extends JFrame {
         setSize(500, 500);
         setVisible(true);
         setLayout(new BorderLayout());
+        setAlwaysOnTop(true);
     }
 
     public static JPanel panelGrid(){
@@ -68,14 +69,5 @@ public class GUI extends JFrame {
             System.out.println("Game reset!");
 
         });
-    }
-    public static void gameOver() {
-        lblMine.setText("Game Over!");
-        btnReset.setText("☹");
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5 ; j++) {
-                buttons[i][j].getBtn().setEnabled(false);
-            }
-        }
     }
 }

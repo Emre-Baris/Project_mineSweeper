@@ -1,11 +1,9 @@
-import javax.swing.*;
 import java.util.ArrayList;
 
 public class isNeighbour {
 
     public static ArrayList<cell> isNeighbourOf(int row, int col, cell[][] grid){
-        int currentRow =0;
-        int currentCol =0;
+
         ArrayList<cell> neighbors = new ArrayList<>();
 
         for (int i = Math.max(0, row-1); //Math.max used to ensure index doesn't go below 0
@@ -18,12 +16,11 @@ public class isNeighbour {
 
                 if (grid[i][j] != grid[row][col]) { //Check and don't add the clicked button
                     neighbors.add(grid[i][j]);
-                    currentRow = i;
-                    currentCol = j;
+
                 }
             }
         }
-
+        GUI.currentMap.get(row+col*10).setNeighbors(neighbors);
         return neighbors;
     }
 

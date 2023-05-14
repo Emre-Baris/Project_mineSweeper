@@ -10,7 +10,7 @@ public class cell {
     private int adjacentMines; // number of adjacent buttons with mines
     private boolean isFlagged; // whether the button is flagged
     private boolean isRevealed; // whether the button is revealed
-    private ArrayList<JButton> neighbors; // list of adjacent buttons
+    private ArrayList<cell> neighbors; // list of adjacent buttons
 
 
     public cell(){
@@ -43,12 +43,9 @@ public class cell {
     public void setBtn(JButton btn) {
         this.btn = btn;
     }
+    public ArrayList<cell> getNeighbors() { return neighbors; }
 
-    public ArrayList<JButton> getNeighbors() {
-        return neighbors;
-    }
-
-    public void setNeighbors(ArrayList<JButton> neighbors) {
+    public void setNeighbors(ArrayList<cell> neighbors) {
         this.neighbors = neighbors;
     }
 

@@ -18,9 +18,14 @@ public class checkZeroNeighbors{
 
             for (cell neighbor : GUI.currentMap.get(pos).getNeighbors()) {
                 if (!GUI.currentMap.get(neighbor.getCellCoordinates()).isRevealed()) {
+//                    if(GUI.currentMap.get(neighbor.getCellCoordinates()).isFlagged()){
+//                        neighbor.setFlagged(false);
+//                        gameConditions.flags++;
+//                        GUI.lblMineCount.setText(String.valueOf(gameConditions.flags));
+//                    }
                     neighbor.getBtn().setText(String.valueOf(GUI.currentMap.get(neighbor.getCellCoordinates()).getAdjacentMines()));
-                    revealZero(neighbor);
                 }
+                    revealZero(neighbor);
             }
         }
     }

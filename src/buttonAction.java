@@ -27,7 +27,7 @@ public class buttonAction extends GUI{
 
                                     if (currentMap.get(pos).isMine()) {
                                         lblMine.setText("Game Over");
-                                        gameOver();
+                                        gameConditions.gameOver();
                                         button.setText("\uD83D\uDCA5"); //Set text of button to mine
                                     }
                                     else
@@ -41,9 +41,13 @@ public class buttonAction extends GUI{
                                 if (currentMap.get(pos).isFlagged()) {
                                     currentMap.get(pos).setFlagged(false);
                                     button.setText("");
+                                    gameConditions.flags++;
+                                    GUI.lblMineCount.setText(String.valueOf(gameConditions.flags));
                                 } else {
                                     currentMap.get(pos).setFlagged(true);
                                     button.setText("\uD83D\uDEA9"); //Set text of button to flag
+                                    gameConditions.flags--;
+                                    GUI.lblMineCount.setText(String.valueOf(gameConditions.flags));
                                 }
                             }
 
@@ -56,24 +60,6 @@ public class buttonAction extends GUI{
         } //End of for loop
 
     }
-
-    public static void gameOver() {
-        lblMine.setText("Game Over!");
-        btnReset.setText("☹");
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5 ; j++) {
-                if (currentMap.get(i+(j*10)).isMine()){
-                    buttons[i][j].getBtn().setText("\uD83D\uDCA5");
-                }
-
-                else {
-                    //buttons[i][j].getBtn().setText(String.valueOf(currentMap.get(i+(j*10)).getAdjacentMines()));
-                }
-                buttons[i][j].getBtn().setEnabled(false);
-            }
-        }
-    }
-
 }
 
 

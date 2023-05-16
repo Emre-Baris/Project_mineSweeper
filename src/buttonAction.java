@@ -1,8 +1,13 @@
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.LinkedList;
 
 public class buttonAction extends GUI{
+
+    public static LinkedList<moveList.gameMove> moveList = new LinkedList<>();
+
+
 
     public static void addListener(cell[][] grid){
 

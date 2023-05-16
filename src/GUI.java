@@ -4,8 +4,10 @@ import java.util.HashMap;
 
 public class GUI extends JFrame {
 
-    static JLabel lblMineCount = new JLabel("Mine Count", SwingConstants.CENTER);
-    static JLabel lblTimer = new JLabel("Time", SwingConstants.CENTER);
+    static JLabel lblMineCounttext = new JLabel("Mine Count", SwingConstants.CENTER);
+    static JLabel lblMineCount = new JLabel(String.valueOf(gameConditions.flags), SwingConstants.CENTER);
+    static JLabel lblTimertext = new JLabel("Time", SwingConstants.CENTER);
+    static JLabel lblTimer = new JLabel(String.valueOf(gameConditions.timecontrol), SwingConstants.CENTER);
     static JLabel lblMine = new JLabel("Mine Status", SwingConstants.CENTER);
     static JButton btnReset = new JButton("☺");
     public static cell[][] buttons = new cell[5][5];
@@ -53,9 +55,11 @@ public class GUI extends JFrame {
 
         GUI frame = new GUI();
 
-        JPanel panelUpper = new JPanel(new GridLayout(1,3));
+        JPanel panelUpper = new JPanel(new GridLayout(1,5));
+        panelUpper.add(lblMineCounttext);
         panelUpper.add(lblMineCount);
         panelUpper.add(btnReset);
+        panelUpper.add(lblTimertext);
         panelUpper.add(lblTimer);
 
         frame.add(panelUpper, BorderLayout.NORTH);

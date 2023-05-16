@@ -27,6 +27,8 @@ public class mineGeneration extends GUI{
             }
             i++;
         }
+        GUI.lblMineCount.setText(String.valueOf(gameConditions.startingmines)); //Resetting mine count
+        gameConditions.flags = gameConditions.startingmines;
         currentMap = gridValues;
         mineGenerator();
         mineCounter.countMines(buttons);

@@ -4,14 +4,17 @@ import java.util.HashMap;
 
 public class GUI extends JFrame {
 
-    static JLabel lblMineCounttext = new JLabel("Mine Count", SwingConstants.CENTER);
+    static JLabel lblMineCountText = new JLabel("Mine Count", SwingConstants.CENTER);
     static JLabel lblMineCount = new JLabel(String.valueOf(gameConditions.flags), SwingConstants.CENTER);
-    static JLabel lblTimertext = new JLabel("Time", SwingConstants.CENTER);
-    static JLabel lblTimer = new JLabel(String.valueOf(gameConditions.timecontrol), SwingConstants.CENTER);
+    static JLabel lblTimerText = new JLabel("Time", SwingConstants.CENTER);
+    static JLabel lblTimer = new JLabel(String.valueOf(gameConditions.timeControl), SwingConstants.CENTER);
     static JLabel lblMine = new JLabel("Mine Status", SwingConstants.CENTER);
     static JButton btnReset = new JButton("☺");
+    static JButton btnReplay = new JButton("▶");
     public static cell[][] buttons = new cell[5][5];
     static HashMap<Integer, cell> currentMap = new HashMap<>();
+
+
 
 
     public GUI (){                      //Constructor for frame
@@ -56,15 +59,24 @@ public class GUI extends JFrame {
         GUI frame = new GUI();
 
         JPanel panelUpper = new JPanel(new GridLayout(1,5));
-        panelUpper.add(lblMineCounttext);
+        panelUpper.add(lblMineCountText);
         panelUpper.add(lblMineCount);
         panelUpper.add(btnReset);
-        panelUpper.add(lblTimertext);
+        panelUpper.add(lblTimerText);
         panelUpper.add(lblTimer);
 
         frame.add(panelUpper, BorderLayout.NORTH);
         frame.add(panelGrid(), BorderLayout.CENTER);
+
         frame.add(lblMine, BorderLayout.SOUTH);
+        frame.add(btnReplay, BorderLayout.SOUTH);
+        btnReplay.addActionListener(e -> {
+            try {
+                gameMove.replayGame();
+            } catch (InterruptedException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
 
         mineGeneration.mineReset();
         buttonAction.addListener(buttons);

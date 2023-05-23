@@ -1,8 +1,11 @@
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.LinkedList;
 
 public class buttonAction extends GUI{
+
+    public static LinkedList<gameMove> moveList = new LinkedList<>();
 
     public static void addListener(cell[][] grid){
 
@@ -34,6 +37,11 @@ public class buttonAction extends GUI{
                                         checkZeroNeighbors.revealZero(currentMap.get(pos));
                                         //button.setText(String.valueOf(currentMap.get(pos).getAdjacentMines())); //Set text of button to number of mines
                                 }
+
+                                gameMove move = new gameMove(finalI, finalJ, true);
+                                moveList.add(move);
+
+
                             }
 
                                                                             //Define the action for right click
@@ -49,6 +57,11 @@ public class buttonAction extends GUI{
                                     gameConditions.flags--;
                                     GUI.lblMineCount.setText(String.valueOf(gameConditions.flags));
                                 }
+
+                                gameMove move = new gameMove(finalI, finalJ, false);
+                                moveList.add(move);
+
+
                             }
 
                         }

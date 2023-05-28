@@ -81,6 +81,7 @@ public class GUI extends JFrame {
         mineGeneration.mineReset();
         buttonAction.addListener(buttons);
         btnReset.addActionListener(e -> {
+            buttonAction.moveList.clear();
             mineGeneration.mineReset();
             System.out.println("Game reset!");
 

@@ -16,17 +16,44 @@ public class gameMove {
         }
 
     public static void replayGame() throws InterruptedException {
-        for (gameMove move : buttonAction.moveList) {
-            int row = move.getClickedRow();
-            int col = move.getClickedCol();
 
-            GUI.buttons[row][col].getBtn().doClick(1);
-
-            TimeUnit.SECONDS.sleep(2);
-            // Simulate the button click based on the row and column indices
-            // Perform the necessary actions for the replay
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5 ; j++) {
+                //JButton btn = ;
+                GUI.currentMap.get(i+(j*10)).getBtn().setEnabled(true);
+                GUI.currentMap.get(i+(j*10)).getBtn().setText("");
+            }
         }
-    }
+        for (gameMove move : buttonAction.moveList) {
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+
+            replayClick(move);
+        }
+
+        }
+
+        public static void replayClick(gameMove move){
+
+
+                int row = move.getClickedRow();
+                int col = move.getClickedCol();
+                boolean isLeftClick = move.isClickedLeftClick();
+
+                JButton btn = GUI.buttons[row][col].getBtn();
+                buttonAction.clickAction(row, col, isLeftClick,btn);
+                if(isLeftClick){
+                    checkZeroNeighbors.revealZero(GUI.currentMap.get(row+(col*10)));
+                }
+
+                // Delay for a brief period to allow time for the actions to be processed
+            }
+
+
         // Add any additional getters or setters as needed
 
 

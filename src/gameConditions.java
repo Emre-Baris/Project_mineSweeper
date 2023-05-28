@@ -1,3 +1,6 @@
+import javax.swing.*;
+import java.awt.event.MouseEvent;
+
 public class gameConditions extends GUI {
 
     public static int width = 5;
@@ -34,18 +37,5 @@ public class gameConditions extends GUI {
         }
     }
 
-    public static void replayGame() {
-        for (gameMove move : buttonAction.moveList) {
-            int row = move.getClickedRow();
-            int col = move.getClickedCol();
-            boolean isLeftClick = move.isClickedLeftClick();
-            // Simulate the button click based on the row and column indices
-            // Perform the necessary actions for the replay
-
-            GUI.buttons[row][col].getBtn().doClick();
-
-
-        }
-    }
 
 }

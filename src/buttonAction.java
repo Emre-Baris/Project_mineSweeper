@@ -19,50 +19,12 @@ public class buttonAction extends GUI{
                 JButton button = currentMap.get(pos).getBtn(); //Get the button from the grid
 
                 button.addMouseListener(new MouseAdapter() {
+
+
                     @Override
                     public void mousePressed(MouseEvent e) {
-
                         if (button.isEnabled()){
-                            //Define the action for left click
-                            if (SwingUtilities.isLeftMouseButton(e)) {
-                               // lblMine.setText("Mine Status: " + currentMap.get(grid[finalI][finalJ].getCellCoordinates()).isMine());
-                                if (!currentMap.get(pos).isFlagged()) {
-
-                                    if (currentMap.get(pos).isMine()) {
-                                        lblMine.setText("Game Over");
-                                        gameConditions.gameOver();
-                                        button.setText("\uD83D\uDCA5"); //Set text of button to mine
-                                    }
-                                    else
-                                        checkZeroNeighbors.revealZero(currentMap.get(pos));
-                                        //button.setText(String.valueOf(currentMap.get(pos).getAdjacentMines())); //Set text of button to number of mines
-                                }
-
-                                gameMove move = new gameMove(finalI, finalJ, true);
-                                moveList.add(move);
-
-
-                            }
-
-                                                                            //Define the action for right click
-                            else if (SwingUtilities.isRightMouseButton(e)) {
-                                if (currentMap.get(pos).isFlagged()) {
-                                    currentMap.get(pos).setFlagged(false);
-                                    button.setText("");
-                                    gameConditions.flags++;
-                                    GUI.lblMineCount.setText(String.valueOf(gameConditions.flags));
-                                } else {
-                                    currentMap.get(pos).setFlagged(true);
-                                    button.setText("\uD83D\uDEA9"); //Set text of button to flag
-                                    gameConditions.flags--;
-                                    GUI.lblMineCount.setText(String.valueOf(gameConditions.flags));
-                                }
-
-                                gameMove move = new gameMove(finalI, finalJ, false);
-                                moveList.add(move);
-
-
-                            }
+                            moveList.add(clickAction(finalI, finalJ, SwingUtilities.isLeftMouseButton(e),button));
 
                         }
 
@@ -73,6 +35,51 @@ public class buttonAction extends GUI{
         } //End of for loop
 
     }
+
+    public static gameMove clickAction(int row, int col, boolean isLeftClick,JButton button){
+
+            int pos = row+(col*10);
+
+
+
+
+            //Define the action for left click
+            if (isLeftClick) {
+                // lblMine.setText("Mine Status: " + currentMap.get(grid[finalI][finalJ].getCellCoordinates()).isMine());
+                if (!currentMap.get(pos).isFlagged()) {
+
+                    if (currentMap.get(pos).isMine()) {
+                        lblMine.setText("Game Over");
+                        gameConditions.gameOver();
+                        button.setText("\uD83D\uDCA5"); //Set text of button to mine
+                    }
+                    else
+                        checkZeroNeighbors.revealZero(currentMap.get(pos));
+                    //button.setText(String.valueOf(currentMap.get(pos).getAdjacentMines())); //Set text of button to number of mines
+                }
+
+            }
+
+            //Define the action for right click
+            else{
+                if (currentMap.get(pos).isFlagged()) {
+                    currentMap.get(pos).setFlagged(false);
+                    button.setText("");
+                    gameConditions.flags++;
+                    GUI.lblMineCount.setText(String.valueOf(gameConditions.flags));
+                } else {
+                    currentMap.get(pos).setFlagged(true);
+                    button.setText("\uD83D\uDEA9"); //Set text of button to flag
+                    gameConditions.flags--;
+                    GUI.lblMineCount.setText(String.valueOf(gameConditions.flags));
+                }
+
+
+            }
+
+        return new gameMove(row,col,isLeftClick);
+    }
+
 }
 
 

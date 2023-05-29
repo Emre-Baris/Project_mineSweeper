@@ -27,7 +27,7 @@ public class buttonAction extends GUI{
                             moveList.add(clickAction(finalI, finalJ, SwingUtilities.isLeftMouseButton(e),button));
 
                         }
-
+                        gameConditions.gameWon();
                     }//End of mouse released
                 }); //End of mouse listener
 

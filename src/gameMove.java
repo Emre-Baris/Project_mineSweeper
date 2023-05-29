@@ -17,67 +17,26 @@ public class gameMove {
 
     public static void replayGame() throws InterruptedException {
 
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5 ; j++) {
-                //JButton btn = ;
-                GUI.currentMap.get(i+(j*10)).getBtn().setEnabled(true);
-                GUI.currentMap.get(i+(j*10)).getBtn().setText("");
-            }
-        }
-        for (gameMove move : buttonAction.moveList) {
-
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-
-            replayClick(move);
-        }
-
-        }
-
-        public static void replayClick(gameMove move){
-
-
-                int row = move.getClickedRow();
-                int col = move.getClickedCol();
-                boolean isLeftClick = move.isClickedLeftClick();
-
-                JButton btn = GUI.buttons[row][col].getBtn();
-                buttonAction.clickAction(row, col, isLeftClick,btn);
-                if(isLeftClick){
-                    checkZeroNeighbors.revealZero(GUI.currentMap.get(row+(col*10)));
+        new Thread(() -> {
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 5; j++) {
+                    GUI.currentMap.get(i + (j * 10)).getBtn().setEnabled(true);
+                    GUI.currentMap.get(i + (j * 10)).getBtn().setText("");
+                    GUI.currentMap.get(i + (j * 10)).setFlagged(false);
+                    GUI.currentMap.get(i + (j * 10)).setRevealed(false);
                 }
-
-                // Delay for a brief period to allow time for the actions to be processed
             }
-
-
-        // Add any additional getters or setters as needed
-
-
-        public boolean isClickedLeftClick() {
-            return clickedLeftClick;
-        }
-
-        public void setClickedLeftClick(boolean clickedLeftClick) {
-            this.clickedLeftClick = clickedLeftClick;
-        }
-
-        public int getClickedRow() {
-            return clickedRow;
-        }
-
-        public void setClickedRow(int clickedRow) {
-            this.clickedRow = clickedRow;
-        }
-
-        public int getClickedCol() {
-            return clickedCol;
-        }
-
-        public void setClickedCol(int clickedCol) {
-            this.clickedCol = clickedCol;
+                for (gameMove move : buttonAction.moveList) {
+                        int col = move.clickedCol;
+                        int row = move.clickedRow;
+                        boolean click = move.clickedLeftClick;
+                    try {
+                        Thread.sleep(1000);
+                        buttonAction.clickAction(row, col, click, GUI.buttons[row][col].getBtn());
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
+                }
+        }).start();
         }
 }

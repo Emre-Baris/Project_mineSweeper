@@ -1,16 +1,17 @@
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
 import java.util.LinkedList;
 
 public class buttonAction extends GUI{
 
     public static LinkedList<gameMove> moveList = new LinkedList<>();
 
-    public static void addListener(cell[][] grid){
+    public static void addListener(){
 
-        for (int i = 0; i < grid.length; i++) {       //Loop to iterate through the grid rows
-            for (int j = 0; j < grid[i].length; j++) {  //Secondary loop for iterating columns, here grid[i] gives number of columns
+        for (int i = 0; i < gridRows; i++) {       //Loop to iterate through the grid rows
+            for (int j = 0; j < gridCols; j++) {  //Secondary loop for iterating columns, here grid[i] gives number of columns
 
                 final int finalI = i;
                 final int finalJ = j;
@@ -42,7 +43,6 @@ public class buttonAction extends GUI{
 
         //Define the action for left click
         if (isLeftClick) {
-            // lblMine.setText("Mine Status: " + currentMap.get(grid[finalI][finalJ].getCellCoordinates()).isMine());
             if (!currentMap.get(pos).isFlagged()) {
 
                 if (currentMap.get(pos).isMine()) {
@@ -52,7 +52,6 @@ public class buttonAction extends GUI{
                 }
                 else{
                     checkZeroNeighbors.revealZero(currentMap.get(pos));
-                    //currentMap.get(pos).setRevealed(true);
                 }
             }
 
@@ -67,7 +66,7 @@ public class buttonAction extends GUI{
                 GUI.lblMineCount.setText(String.valueOf(gameConditions.minesLeft));
             } else {
                 currentMap.get(pos).setFlagged(true);
-                button.setText("\uD83D\uDEA9"); //Set text of button to flag
+                button.setText("\uD83D\uDEA9");         //Set text of button to flag
                 gameConditions.minesLeft--;
                 GUI.lblMineCount.setText(String.valueOf(gameConditions.minesLeft));
             }

@@ -8,14 +8,14 @@ public class mineGeneration extends GUI{
         HashMap<Integer, cell> gridValues = new HashMap<>();
 
         int i = 0;
-        while (i < buttons.length) {
+        while (i < gridRows) {
 
             int j = 0;
-            while (j < buttons[1].length) {
+            while (j < gridCols) {
 
                 int a = i+(j*10);
                 cell created = new cell();
-                created.setBtn(buttons[i][j].getBtn());
+                created.setBtn(currentMap.get(posOfCell(i,j)).getBtn());
                 created.setRow(i);
                 created.setCol(j);
                 created.setMine(false);
@@ -32,7 +32,7 @@ public class mineGeneration extends GUI{
 
         currentMap = gridValues; //set the old map to the newly generated one
         mineGenerator(); //execute the generation of mines
-        mineCounter.countMines(buttons); //count the mines after the grid is created for later use
+        mineCounter.countMines(currentMap); //count the mines after the grid is created for later use
     }
 
     //Used random numbers for both deciding num of mines and placement of mines
@@ -48,8 +48,8 @@ public class mineGeneration extends GUI{
 
         while(numOfMines>0) {       //Values to decide mines placement
             int row = randomNum(0, 4);
-            int column = 10*randomNum(0, 4);
-            int pos = row + column;
+            int column = randomNum(0, 4);
+            int pos = posOfCell(row, column);
 
             if(!currentMap.get(pos).isMine()) {     //If the current cell is not a mine then
                 currentMap.get(pos).setMine(true);     //Set the current cell to a mine

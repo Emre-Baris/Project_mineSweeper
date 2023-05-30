@@ -16,8 +16,8 @@ public class gameMove {
     public static void replayGame() throws InterruptedException {
 
         new Thread(() -> {
-            for (int i = 0; i < 5; i++) {
-                for (int j = 0; j < 5; j++) {
+            for (int i = 0; i < GUI.gridRows; i++) {
+                for (int j = 0; j < GUI.gridCols; j++) {
                     GUI.currentMap.get(i + (j * 10)).getBtn().setEnabled(true);
                     GUI.currentMap.get(i + (j * 10)).getBtn().setText("");
                     GUI.currentMap.get(i + (j * 10)).setFlagged(false);
@@ -33,7 +33,8 @@ public class gameMove {
                         boolean click = move.isClickedLeftClick();
                     try {
                         Thread.sleep(1000);
-                        buttonAction.clickAction(row, col, click, GUI.buttons[row][col].getBtn());
+                        buttonAction.clickAction(row, col, click, GUI.currentMap.get(GUI.posOfCell(row,col)).getBtn());
+
                     } catch (InterruptedException e) {
                         Thread.currentThread().interrupt();
                     }

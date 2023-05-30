@@ -7,16 +7,16 @@ public class GUI extends JFrame {
     static JLabel lblMineCountText = new JLabel("Mine Count", SwingConstants.CENTER);
     static JLabel lblMineCount = new JLabel();
     static JLabel lblBlnk = new JLabel("");
-
     static JLabel lblBlnk2 = new JLabel("");
-
     static JLabel lblMine = new JLabel("Mine Status", SwingConstants.CENTER);
     static JButton btnReset = new JButton("☺");
     static JButton btnReplay = new JButton("▶");
-    public static cell[][] buttons = new cell[5][5];
     static HashMap<Integer, cell> currentMap = new HashMap<>();
 
-    
+    public static int gridRows =5;
+
+    public static int gridCols= 5;
+
 
 
     public GUI (){                      //Constructor for frame
@@ -31,13 +31,13 @@ public class GUI extends JFrame {
     public static JPanel panelGrid(){
 
         JPanel panelGrid = new JPanel();
-        panelGrid.setLayout(new GridLayout(5,5));
+        panelGrid.setLayout(new GridLayout(gridRows,gridCols));
 
                                 //Generated buttons
         int i = 0;              //Adds cells to 2D Array for later usage
-        while (i < 5) {
+        while (i < gridRows) {
             int j = 0;
-            while (j < 5) {
+            while (j < gridCols) {
 
                 JButton button = new JButton();
                 cell newCell = new cell();
@@ -45,7 +45,7 @@ public class GUI extends JFrame {
                 newCell.setBtn(button);         //Sets the values for the newly created cell
                 newCell.setRow(i);
                 newCell.setCol(j);
-                buttons[i][j] = newCell;
+                currentMap.put(posOfCell(i,j), newCell);
 
                 panelGrid.add(button);
 
@@ -87,7 +87,7 @@ public class GUI extends JFrame {
         });
 
         mineGeneration.mineReset();
-        buttonAction.addListener(buttons);
+        buttonAction.addListener();
         btnReset.addActionListener(e -> {
             gameConditions.revealed = 0;
             buttonAction.moveList.clear();
@@ -95,5 +95,9 @@ public class GUI extends JFrame {
             System.out.println("Game reset!");
 
         });
+    }
+
+    public static int posOfCell(int row, int col){
+        return row+(col*10);
     }
 }

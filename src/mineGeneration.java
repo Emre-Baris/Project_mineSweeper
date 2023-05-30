@@ -8,48 +8,60 @@ public class mineGeneration extends GUI{
         HashMap<Integer, cell> gridValues = new HashMap<>();
 
         int i = 0;
-        while (i < buttons.length) {
+        while (i < gridRows) {
 
             int j = 0;
-            while (j < buttons[1].length) {
+            while (j < gridCols) {
 
                 int a = i+(j*10);
                 cell created = new cell();
-                created.setBtn(buttons[i][j].getBtn());
+                created.setBtn(currentMap.get(posOfCell(i,j)).getBtn());
                 created.setRow(i);
                 created.setCol(j);
                 created.setMine(false);
                 created.setFlagged(false);
                 created.getBtn().setEnabled(true);
-                created.getBtn().setText(" ");
+                created.getBtn().setText("");
                 gridValues.put(a, created);
                 j++;
             }
             i++;
         }
-        GUI.lblMineCount.setText(String.valueOf(gameConditions.startingMines)); //Resetting mine count
-        gameConditions.flags = gameConditions.startingMines;
-        currentMap = gridValues;
-        mineGenerator();
-        mineCounter.countMines(buttons);
-        btnReset.setText("☺");
+
+        btnReset.setText("☺"); //
+
+        currentMap = gridValues; //set the old map to the newly generated one
+        mineGenerator(); //execute the generation of mines
+        mineCounter.countMines(currentMap); //count the mines after the grid is created for later use
     }
 
     //Used random numbers for both deciding num of mines and placement of mines
     public static void mineGenerator(){
 
-        int numOfMines = 2;//randomNum(2,2);
+        int floor = (int) Math.sqrt(gridRows * gridCols);
+
+        int lowerLimit = (int) (floor*1.5);
+
+        int upperLimit = (int) (floor*2);
+
+        int numOfMines = randomNum(lowerLimit, upperLimit); //Random number of mines between 80% and 120% of the square root of the grid size
+
+        gameConditions.minesLeft = numOfMines;
+        gameConditions.startingMines = numOfMines;
+
+        GUI.lblMineCount.setText(String.valueOf(numOfMines));
+
 
         while(numOfMines>0) {       //Values to decide mines placement
-            int row = randomNum(0, 4);
-            int column = 10*randomNum(0, 4);
+            int row = randomNum(0, gridRows-1);
+            int column = randomNum(0, gridCols-1);
+            int pos = posOfCell(row, column);
 
-            currentMap.get(row+column).setMine(true);                     //Setting mines
-            buttons[row][column/10].getBtn().setText(" ");         //Setting text of mines to see where mines are
-            numOfMines--;
-
+            if(!currentMap.get(pos).isMine()) {     //If the current cell is not a mine then
+                currentMap.get(pos).setMine(true);     //Set the current cell to a mine
+                numOfMines--;
+            }
         }
-
 
     }
 

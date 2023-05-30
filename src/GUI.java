@@ -5,15 +5,18 @@ import java.util.HashMap;
 public class GUI extends JFrame {
 
     static JLabel lblMineCountText = new JLabel("Mine Count", SwingConstants.CENTER);
-    static JLabel lblMineCount = new JLabel(String.valueOf(gameConditions.flags), SwingConstants.CENTER);
-    static JLabel lblTimerText = new JLabel("Time", SwingConstants.CENTER);
-    static JLabel lblTimer = new JLabel(String.valueOf(gameConditions.timeControl), SwingConstants.CENTER);
-    static JLabel lblMine = new JLabel("Mine Status", SwingConstants.CENTER);
+    static JLabel lblMineCount = new JLabel();
+    static JLabel lblBlank = new JLabel("");
+    static JLabel lblBlank2 = new JLabel("");
     static JButton btnReset = new JButton("☺");
     static JButton btnReplay = new JButton("▶");
-    public static cell[][] buttons = new cell[5][5];
     static HashMap<Integer, cell> currentMap = new HashMap<>();
 
+    static JLabel lblWin = new JLabel("", SwingConstants.CENTER);
+
+    public static int gridRows =10;
+
+    public static int gridCols= 10;
 
 
 
@@ -29,13 +32,13 @@ public class GUI extends JFrame {
     public static JPanel panelGrid(){
 
         JPanel panelGrid = new JPanel();
-        panelGrid.setLayout(new GridLayout(5,5));
+        panelGrid.setLayout(new GridLayout(gridRows,gridCols));
 
                                 //Generated buttons
         int i = 0;              //Adds cells to 2D Array for later usage
-        while (i < 5) {
+        while (i < gridRows) {
             int j = 0;
-            while (j < 5) {
+            while (j < gridCols) {
 
                 JButton button = new JButton();
                 cell newCell = new cell();
@@ -43,7 +46,7 @@ public class GUI extends JFrame {
                 newCell.setBtn(button);         //Sets the values for the newly created cell
                 newCell.setRow(i);
                 newCell.setCol(j);
-                buttons[i][j] = newCell;
+                currentMap.put(posOfCell(i,j), newCell);
 
                 panelGrid.add(button);
 
@@ -56,20 +59,33 @@ public class GUI extends JFrame {
 
     public static void main(String[] args) {
 
+
+        lblMineCount.setHorizontalAlignment(SwingConstants.CENTER);
+
         GUI frame = new GUI();
 
-        JPanel panelUpper = new JPanel(new GridLayout(1,5));
-        panelUpper.add(lblMineCountText);
-        panelUpper.add(lblMineCount);
-        panelUpper.add(btnReset);
-        panelUpper.add(lblTimerText);
-        panelUpper.add(lblTimer);
+        JPanel panelReset = new JPanel(new GridLayout(1,5));
+        panelReset.add(lblMineCountText);
+        panelReset.add(lblMineCount);
+        panelReset.add(btnReset);
+        panelReset.add(lblBlank);
+        panelReset.add(lblBlank2);
+
+        JPanel panelUpper = new JPanel(new GridLayout(2,1));
+        panelUpper.add(panelReset);
+        panelUpper.add(lblWin);
 
         frame.add(panelUpper, BorderLayout.NORTH);
+
+
+
+
         frame.add(panelGrid(), BorderLayout.CENTER);
 
-        frame.add(lblMine, BorderLayout.SOUTH);
         frame.add(btnReplay, BorderLayout.SOUTH);
+
+
+
         btnReplay.addActionListener(e -> {
             try {
                 gameMove.replayGame();
@@ -79,12 +95,16 @@ public class GUI extends JFrame {
         });
 
         mineGeneration.mineReset();
-        buttonAction.addListener(buttons);
+        buttonAction.addListener();
         btnReset.addActionListener(e -> {
+            lblWin.setText("");
+            gameConditions.revealed = 0;
             buttonAction.moveList.clear();
             mineGeneration.mineReset();
-            System.out.println("Game reset!");
-
         });
+    }
+
+    public static int posOfCell(int row, int col){
+        return row+(col*10);
     }
 }

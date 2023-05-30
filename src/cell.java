@@ -26,7 +26,7 @@ public class cell {
     }
 
     public boolean isRevealed() {
-        return isRevealed;
+        return !isRevealed;
     }
 
     public void setRevealed(boolean revealed) {
@@ -49,16 +49,8 @@ public class cell {
         this.neighbors = neighbors;
     }
 
-    public int getRow() {
-        return row;
-    }
-
     public void setRow(int row) {
         this.row = row;
-    }
-
-    public int getCol() {
-        return col;
     }
 
     public void setCol(int col) {

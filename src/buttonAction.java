@@ -7,10 +7,10 @@ public class buttonAction extends GUI{
 
     public static LinkedList<gameMove> moveList = new LinkedList<>();
 
-    public static void addListener(cell[][] grid){
+    public static void addListener(){
 
-        for (int i = 0; i < grid.length; i++) {       //Loop to iterate through the grid rows
-            for (int j = 0; j < grid[i].length; j++) {  //Secondary loop for iterating columns, here grid[i] gives number of columns
+        for (int i = 0; i < gridRows; i++) {       //Loop to iterate through the grid rows
+            for (int j = 0; j < gridCols; j++) {  //Secondary loop for iterating columns, here grid[i] gives number of columns
 
                 final int finalI = i;
                 final int finalJ = j;
@@ -27,7 +27,7 @@ public class buttonAction extends GUI{
                             moveList.add(clickAction(finalI, finalJ, SwingUtilities.isLeftMouseButton(e),button));
 
                         }
-                        gameConditions.gameWon();
+                                     //gameConditions.gameWon();
                     }//End of mouse released
                 }); //End of mouse listener
 
@@ -38,45 +38,41 @@ public class buttonAction extends GUI{
 
     public static gameMove clickAction(int row, int col, boolean isLeftClick,JButton button){
 
-            int pos = row+(col*10);
+        int pos = row+(col*10);
 
+        //Define the action for left click
+        if (isLeftClick) {
+            if (!currentMap.get(pos).isFlagged()) {
 
-
-
-            //Define the action for left click
-            if (isLeftClick) {
-                // lblMine.setText("Mine Status: " + currentMap.get(grid[finalI][finalJ].getCellCoordinates()).isMine());
-                if (!currentMap.get(pos).isFlagged()) {
-
-                    if (currentMap.get(pos).isMine()) {
-                        lblMine.setText("Game Over");
-                        gameConditions.gameOver();
-                        button.setText("\uD83D\uDCA5"); //Set text of button to mine
-                    }
-                    else
-                        checkZeroNeighbors.revealZero(currentMap.get(pos));
-                    //button.setText(String.valueOf(currentMap.get(pos).getAdjacentMines())); //Set text of button to number of mines
+                if (currentMap.get(pos).isMine()) {
+                    lblWin.setText("Game Over");
+                    gameConditions.gameOver();
+                    button.setText("\uD83D\uDCA5"); //Set text of button to mine
                 }
-
+                else{
+                    checkZeroNeighbors.revealZero(currentMap.get(pos));
+                }
             }
 
-            //Define the action for right click
-            else{
-                if (currentMap.get(pos).isFlagged()) {
-                    currentMap.get(pos).setFlagged(false);
-                    button.setText("");
-                    gameConditions.flags++;
-                    GUI.lblMineCount.setText(String.valueOf(gameConditions.flags));
-                } else {
-                    currentMap.get(pos).setFlagged(true);
-                    button.setText("\uD83D\uDEA9"); //Set text of button to flag
-                    gameConditions.flags--;
-                    GUI.lblMineCount.setText(String.valueOf(gameConditions.flags));
-                }
+        }
 
-
+        //Define the action for right click
+        else{
+            if (currentMap.get(pos).isFlagged()) {
+                currentMap.get(pos).setFlagged(false);
+                button.setText("");
+                gameConditions.minesLeft++;
+                GUI.lblMineCount.setText(String.valueOf(gameConditions.minesLeft));
+            } else {
+                currentMap.get(pos).setFlagged(true);
+                button.setText("\uD83D\uDEA9");         //Set text of button to flag
+                gameConditions.minesLeft--;
+                GUI.lblMineCount.setText(String.valueOf(gameConditions.minesLeft));
             }
 
+
+        }
+        gameConditions.gameWon();
         return new gameMove(row,col,isLeftClick);
     }
 

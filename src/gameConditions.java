@@ -4,14 +4,11 @@ import java.awt.event.MouseEvent;
 
 public class gameConditions extends GUI {
 
-    public static int width = 1;
-    public static int height = 1;
-    public static int totalCells = width * height;
-    public static int startingMines = 5;
-    public static int timeControl = 60;
-    public static int minesLeft = 5;
-    public static int flags = startingMines;
-    public static int revealed = 0;
+
+    public static int minesLeft;
+    public static int startingMines;
+
+    public static int revealed;
 
     public static void gameOver() {
         lblMine.setText("Game Over!");
@@ -22,9 +19,6 @@ public class gameConditions extends GUI {
                 if (currentMap.get(i+(j*10)).isMine()){
                     buttons[i][j].getBtn().setText("\uD83D\uDCA5");
                 }
-//                else {
-//                    buttons[i][j].getBtn().setText(String.valueOf(currentMap.get(i+(j*10)).getAdjacentMines()));
-//                }
                 buttons[i][j].getBtn().setEnabled(false);
             }
         }
@@ -41,9 +35,17 @@ public class gameConditions extends GUI {
         }
     }
 
-    public static void gameWon() {
+    public static void gameWon(cell clickedCell) {
+        revealed = 0;
+        int totalCells = currentMap.size();
 
-        if (minesLeft == 0 && revealed == totalCells - startingMines) {
+        for (cell newCell: currentMap.values()) {
+            if(!newCell.getBtn().getText().equals("")){
+                revealed++;
+            }
+        }
+
+        if (minesLeft == 0 && totalCells == revealed) {
             btnReset.setText("☺");
             toastWin tst = new toastWin();
             tst.setLayout(new BorderLayout());

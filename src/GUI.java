@@ -5,16 +5,18 @@ import java.util.HashMap;
 public class GUI extends JFrame {
 
     static JLabel lblMineCountText = new JLabel("Mine Count", SwingConstants.CENTER);
-    static JLabel lblMineCount = new JLabel(String.valueOf(gameConditions.flags), SwingConstants.CENTER);
-    static JLabel lblTimerText = new JLabel("Time", SwingConstants.CENTER);
-    static JLabel lblTimer = new JLabel(String.valueOf(gameConditions.timeControl), SwingConstants.CENTER);
+    static JLabel lblMineCount = new JLabel();
+    static JLabel lblBlnk = new JLabel("");
+
+    static JLabel lblBlnk2 = new JLabel("");
+
     static JLabel lblMine = new JLabel("Mine Status", SwingConstants.CENTER);
     static JButton btnReset = new JButton("☺");
     static JButton btnReplay = new JButton("▶");
     public static cell[][] buttons = new cell[5][5];
     static HashMap<Integer, cell> currentMap = new HashMap<>();
 
-
+    
 
 
     public GUI (){                      //Constructor for frame
@@ -56,20 +58,26 @@ public class GUI extends JFrame {
 
     public static void main(String[] args) {
 
+
+        lblMineCount.setHorizontalAlignment(SwingConstants.CENTER);
+
         GUI frame = new GUI();
 
         JPanel panelUpper = new JPanel(new GridLayout(1,5));
         panelUpper.add(lblMineCountText);
         panelUpper.add(lblMineCount);
         panelUpper.add(btnReset);
-        panelUpper.add(lblTimerText);
-        panelUpper.add(lblTimer);
+        panelUpper.add(lblBlnk);
+        panelUpper.add(lblBlnk2);
 
         frame.add(panelUpper, BorderLayout.NORTH);
         frame.add(panelGrid(), BorderLayout.CENTER);
 
         frame.add(lblMine, BorderLayout.SOUTH);
         frame.add(btnReplay, BorderLayout.SOUTH);
+
+
+
         btnReplay.addActionListener(e -> {
             try {
                 gameMove.replayGame();
@@ -81,6 +89,7 @@ public class GUI extends JFrame {
         mineGeneration.mineReset();
         buttonAction.addListener(buttons);
         btnReset.addActionListener(e -> {
+            gameConditions.revealed = 0;
             buttonAction.moveList.clear();
             mineGeneration.mineReset();
             System.out.println("Game reset!");

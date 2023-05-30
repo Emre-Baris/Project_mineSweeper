@@ -21,18 +21,18 @@ public class mineGeneration extends GUI{
                 created.setMine(false);
                 created.setFlagged(false);
                 created.getBtn().setEnabled(true);
-                created.getBtn().setText(" ");
+                created.getBtn().setText("");
                 gridValues.put(a, created);
                 j++;
             }
             i++;
         }
-        GUI.lblMineCount.setText(String.valueOf(gameConditions.startingMines)); //Resetting mine count
-        gameConditions.flags = gameConditions.startingMines;
-        currentMap = gridValues;
-        mineGenerator();
-        mineCounter.countMines(buttons);
-        btnReset.setText("☺");
+
+        btnReset.setText("☺"); //
+
+        currentMap = gridValues; //set the old map to the newly generated one
+        mineGenerator(); //execute the generation of mines
+        mineCounter.countMines(buttons); //count the mines after the grid is created for later use
     }
 
     //Used random numbers for both deciding num of mines and placement of mines
@@ -40,16 +40,22 @@ public class mineGeneration extends GUI{
 
         int numOfMines = 2;//randomNum(2,2);
 
+        gameConditions.minesLeft = numOfMines;
+        gameConditions.startingMines = numOfMines;
+
+        GUI.lblMineCount.setText(String.valueOf(numOfMines));
+
+
         while(numOfMines>0) {       //Values to decide mines placement
             int row = randomNum(0, 4);
             int column = 10*randomNum(0, 4);
+            int pos = row + column;
 
-            currentMap.get(row+column).setMine(true);                     //Setting mines
-            buttons[row][column/10].getBtn().setText(" ");         //Setting text of mines to see where mines are
-            numOfMines--;
-
+            if(!currentMap.get(pos).isMine()) {     //If the current cell is not a mine then
+                currentMap.get(pos).setMine(true);     //Set the current cell to a mine
+                numOfMines--;
+            }
         }
-
 
     }
 

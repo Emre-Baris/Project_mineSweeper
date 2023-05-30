@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.HashMap;
 import java.util.LinkedList;
 
 public class buttonAction extends GUI{
@@ -46,7 +45,7 @@ public class buttonAction extends GUI{
             if (!currentMap.get(pos).isFlagged()) {
 
                 if (currentMap.get(pos).isMine()) {
-                    lblMine.setText("Game Over");
+                    lblWin.setText("Game Over");
                     gameConditions.gameOver();
                     button.setText("\uD83D\uDCA5"); //Set text of button to mine
                 }
@@ -73,7 +72,7 @@ public class buttonAction extends GUI{
 
 
         }
-        gameConditions.gameWon(currentMap.get(pos));
+        gameConditions.gameWon();
         return new gameMove(row,col,isLeftClick);
     }
 

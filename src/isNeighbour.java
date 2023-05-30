@@ -3,7 +3,7 @@ import java.util.HashMap;
 
 public class isNeighbour {
 
-    public static ArrayList<cell> isNeighbourOf(int row, int col, HashMap map){
+    public static ArrayList<cell> isNeighbourOf(int row, int col,HashMap map){
 
         ArrayList<cell> neighbors = new ArrayList<>();
 

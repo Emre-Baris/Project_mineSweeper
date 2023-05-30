@@ -1,6 +1,3 @@
-import javax.swing.*;
-import java.awt.event.MouseEvent;
-import java.util.concurrent.TimeUnit;
 
 public class gameMove {
         private int clickedRow;

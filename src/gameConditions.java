@@ -1,6 +1,3 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseEvent;
 
 public class gameConditions extends GUI {
 
@@ -11,7 +8,7 @@ public class gameConditions extends GUI {
     public static int revealed;
 
     public static void gameOver() {
-        lblMine.setText("Game Over!");
+        lblWin.setText("Game Over!");
         btnReset.setText("☹");
         for (int i = 0; i < gridRows; i++) {
             for (int j = 0; j < gridCols; j++) {
@@ -24,18 +21,8 @@ public class gameConditions extends GUI {
         }
     }
 
-    static class toastWin extends JFrame{
-        static JLabel lblWin = new JLabel("You Win!", SwingConstants.CENTER);
-        public toastWin(){
-            setTitle("You Win!");
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            pack();
-            setVisible(false);
-            setAlwaysOnTop(true);
-        }
-    }
 
-    public static void gameWon(cell clickedCell) {
+    public static void gameWon() {
         revealed = 0;
         int totalCells = currentMap.size();
 
@@ -47,10 +34,7 @@ public class gameConditions extends GUI {
 
         if (minesLeft == 0 && totalCells == revealed) {
             btnReset.setText("☺");
-            toastWin tst = new toastWin();
-            tst.setLayout(new BorderLayout());
-            tst.add(toastWin.lblWin, BorderLayout.CENTER);
-            System.out.println("You Win!");
+            lblWin.setText("You Win!");
         }
     }
 

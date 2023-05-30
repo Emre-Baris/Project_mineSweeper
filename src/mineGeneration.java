@@ -38,7 +38,13 @@ public class mineGeneration extends GUI{
     //Used random numbers for both deciding num of mines and placement of mines
     public static void mineGenerator(){
 
-        int numOfMines = 2;//randomNum(2,2);
+        int floor = (int) Math.sqrt(gridRows * gridCols);
+
+        int lowerLimit = (int) (floor*1.5);
+
+        int upperLimit = (int) (floor*2);
+
+        int numOfMines = randomNum(lowerLimit, upperLimit); //Random number of mines between 80% and 120% of the square root of the grid size
 
         gameConditions.minesLeft = numOfMines;
         gameConditions.startingMines = numOfMines;
@@ -47,8 +53,8 @@ public class mineGeneration extends GUI{
 
 
         while(numOfMines>0) {       //Values to decide mines placement
-            int row = randomNum(0, 4);
-            int column = randomNum(0, 4);
+            int row = randomNum(0, gridRows-1);
+            int column = randomNum(0, gridCols-1);
             int pos = posOfCell(row, column);
 
             if(!currentMap.get(pos).isMine()) {     //If the current cell is not a mine then
